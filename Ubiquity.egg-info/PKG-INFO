@@ -1,3 +1,18 @@
+Metadata-Version: 2.1
+Name: Ubiquity
+Version: 0.7.2
+Summary: A brief description of your package
+Home-page: https://github.com/idaaas/Ubiquity-python-mlclient
+Author: Idaaas
+Author-email: support@ubiquity.ai
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Ubuntu
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+
 # Ubiquity Python MLClient
 
 The `ubiquity-python-mlclient` library provides a Python client using our ML Clusters. This module simplifies interactions with Ubiquity's machine learning services, making it easy to integrate into your Python applications.
@@ -39,3 +54,4 @@ from Ubiquity import Ubiquity
 ## Support
 
 Contact at **support@ubiquity.ai**
+
