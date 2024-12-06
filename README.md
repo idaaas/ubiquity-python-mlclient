@@ -13,10 +13,10 @@ sudo apt-get update
 sudo apt-get install --no-install-recommends -qq libbsd-dev uuid-dev libcurl4-openssl-dev
 ```
 
-To include the `ubiquity-go-mlclient` module in your project, run:
+To include the `ubiquity-python-mlclient` module in your project, run:
 
 ```bash
-go get github.com/idaaas/ubiquity-go-mlclient
+pip install get github.com/idaaas/ubiquity-python-mlclient
 ```
 
 ## Requirements
