@@ -1,2 +1,2 @@
 # ubiquity-python-mlclient
-python wrapper for IdAaas ml driver
+python wrapper for Ubiquity mlclient
