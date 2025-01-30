@@ -124,6 +124,9 @@ class ClientHandle(object):
 
     def train(self, modelId, queryId, level):
         return _libUbiquityClientWrapper.ClientHandle_train(self, modelId, queryId, level)
+
+    def cancel(self, modelId, queryId):
+        return _libUbiquityClientWrapper.ClientHandle_cancel(self, modelId, queryId)
     __swig_destroy__ = _libUbiquityClientWrapper.delete_ClientHandle
 
 # Register ClientHandle in _libUbiquityClientWrapper:
