@@ -92,6 +92,9 @@ class ClientHandle(object):
     def getProbability(self):
         return _libUbiquityClientWrapper.ClientHandle_getProbability(self)
 
+    def getBidStatus(self):
+        return _libUbiquityClientWrapper.ClientHandle_getBidStatus(self)
+
     def poll(self):
         return _libUbiquityClientWrapper.ClientHandle_poll(self)
 
@@ -119,6 +122,9 @@ class ClientHandle(object):
     def startLineItem(self, modelId, queryId, maxCPM):
         return _libUbiquityClientWrapper.ClientHandle_startLineItem(self, modelId, queryId, maxCPM)
 
+    def startActionRate(self, encodedModelId, queryId, bidPrice):
+        return _libUbiquityClientWrapper.ClientHandle_startActionRate(self, encodedModelId, queryId, bidPrice)
+
     def startProbability(self, modelId, queryId):
         return _libUbiquityClientWrapper.ClientHandle_startProbability(self, modelId, queryId)
 
@@ -127,6 +133,9 @@ class ClientHandle(object):
 
     def cancel(self, modelId, queryId):
         return _libUbiquityClientWrapper.ClientHandle_cancel(self, modelId, queryId)
+
+    def getDiagnosticString(self):
+        return _libUbiquityClientWrapper.ClientHandle_getDiagnosticString(self)
     __swig_destroy__ = _libUbiquityClientWrapper.delete_ClientHandle
 
 # Register ClientHandle in _libUbiquityClientWrapper:
@@ -166,29 +175,35 @@ MISSING_NUMERIC = float('nan')
 
 UNDEFINED  = 0
 
+NO_BID = 0
+BID = 1
+
 SUCCESS  = 1
 NO_DATA  = 2
 BACK_PRESSURED  = 3
 NO_COMPATIBLE_NODE  = 4
 
-ARCHITECTURE_NOT_SUPPORTED  = 0x20001
-AERON_INITIALIZATION_FAILED  = 0x20002
-INVALID_RESOURCE_ID  = 0x20003
-INVALID_APP_FOR_MODEL  = 0x20004
-MISMATCHED_FEATURE_TYPE  = 0x20005
-INVALID_FEEDBACK_LEVEL  = 0x20006
-MISSING_CREATIVES  = 0x20007
-TOO_MANY_CREATIVES  = 0x20008
-MISPLACED_CREATIVE_ID  = 0x20009
-NO_API_RESPONSE  = 0x2000A
-FORBIDDEN  = 0x2000B
-UNKNOWN_RESOURCE  = 0x2000C
-OTHER_FETCH_ERROR  = 0x2000D
-INVALID_CLUSTER_DESCRIPTION  = 0x2000E
-UNAUTHORIZED = 0x20011
-INTERNAL_API_ERROR = 0x20012
+ARCHITECTURE_NOT_SUPPORTED = 0x05
+AERON_INITIALIZATION_FAILED = 0x06
+INVALID_RESOURCE_ID = 0x07
+INVALID_APP_FOR_MODEL = 0x08
+MISMATCHED_FEATURE_TYPE = 0x09
+INVALID_FEEDBACK_LEVEL = 0x0A
+MISSING_CREATIVES = 0x0B
+TOO_MANY_CREATIVES = 0x0C
+MISPLACED_CREATIVE_ID = 0x0D
+NO_API_RESPONSE = 0x0E
+FORBIDDEN = 0x0F
+UNKNOWN_RESOURCE = 0x10
+OTHER_FETCH_ERROR = 0x11
+INVALID_CLUSTER_DESCRIPTION = 0x12
+SCHEMA_UNAVAILABLE = 0x13
+INVALID_HANDLE = 0x14
+UNAUTHORIZED = 0x15
+INTERNAL_API_ERROR = 0x16
 
 APP_BID_SHADING  = 0
 APP_PROBABILITY  = 1
 APP_LINE_ITEM  = 2
-APP_UNDEFINED  = 3
+APP_ACTION_RATE  = 3
+APP_UNDEFINED  = 9999
