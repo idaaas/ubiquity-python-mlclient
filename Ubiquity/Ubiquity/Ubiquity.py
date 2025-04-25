@@ -122,8 +122,8 @@ class ClientHandle(object):
     def startLineItem(self, modelId, queryId, maxCPM):
         return _libUbiquityClientWrapper.ClientHandle_startLineItem(self, modelId, queryId, maxCPM)
 
-    def startActionRate(self, encodedModelId, queryId, bidPrice):
-        return _libUbiquityClientWrapper.ClientHandle_startActionRate(self, encodedModelId, queryId, bidPrice)
+    def startActionRate(self, modelId, queryId, bidPrice):
+        return _libUbiquityClientWrapper.ClientHandle_startActionRate(self, modelId, queryId, bidPrice)
 
     def startProbability(self, modelId, queryId):
         return _libUbiquityClientWrapper.ClientHandle_startProbability(self, modelId, queryId)
@@ -147,8 +147,8 @@ def getStatusString(statusCode):
 def setAeronDirectory(directoryPath):
     return _libUbiquityClientWrapper.setAeronDirectory(directoryPath)
 
-def setCredential(tenantId):
-    return _libUbiquityClientWrapper.setCredential(tenantId)
+def setCredential(appToken):
+    return _libUbiquityClientWrapper.setCredential(appToken)
 
 def setApiAddress(root):
     return _libUbiquityClientWrapper.setApiAddress(root)
