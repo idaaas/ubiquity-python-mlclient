@@ -98,8 +98,11 @@ class ClientHandle(object):
     def poll(self):
         return _libUbiquityClientWrapper.ClientHandle_poll(self)
 
-    def predict(self):
-        return _libUbiquityClientWrapper.ClientHandle_predict(self)
+    def idle(self):
+        return _libUbiquityClientWrapper.ClientHandle_idle(self)
+
+    def predict(self, modelId, queryId):
+        return _libUbiquityClientWrapper.ClientHandle_predict(self, modelId, queryId)
 
     def putBoolean(self, value):
         return _libUbiquityClientWrapper.ClientHandle_putBoolean(self, value)
@@ -116,26 +119,29 @@ class ClientHandle(object):
     def putNumeric(self, value):
         return _libUbiquityClientWrapper.ClientHandle_putNumeric(self, value)
 
-    def startBidShading(self, modelId, queryId, bidPrice, bidFloor):
-        return _libUbiquityClientWrapper.ClientHandle_startBidShading(self, modelId, queryId, bidPrice, bidFloor)
+    def startBidShading(self, bidPrice, bidFloor, optimizationMode=0):
+        return _libUbiquityClientWrapper.ClientHandle_startBidShading(self, bidPrice, bidFloor, optimizationMode)
 
-    def startLineItem(self, modelId, queryId, maxCPM):
-        return _libUbiquityClientWrapper.ClientHandle_startLineItem(self, modelId, queryId, maxCPM)
+    def startLineItem(self, maxCPM, bidFloor=0.01, exposureCount=0):
+        return _libUbiquityClientWrapper.ClientHandle_startLineItem(self, maxCPM, bidFloor, exposureCount)
 
-    def startActionRate(self, modelId, queryId, bidPrice):
-        return _libUbiquityClientWrapper.ClientHandle_startActionRate(self, modelId, queryId, bidPrice)
+    def startActionRate(self, bidPrice, bidFloor=0.01, exposureCount=0):
+        return _libUbiquityClientWrapper.ClientHandle_startActionRate(self, bidPrice, bidFloor, exposureCount)
 
-    def startProbability(self, modelId, queryId):
-        return _libUbiquityClientWrapper.ClientHandle_startProbability(self, modelId, queryId)
+    def startProbability(self):
+        return _libUbiquityClientWrapper.ClientHandle_startProbability(self)
 
-    def train(self, modelId, queryId, level):
-        return _libUbiquityClientWrapper.ClientHandle_train(self, modelId, queryId, level)
+    def train(self, modelId, queryId, feedbackLevel):
+        return _libUbiquityClientWrapper.ClientHandle_train(self, modelId, queryId, feedbackLevel)
 
     def cancel(self, modelId, queryId):
         return _libUbiquityClientWrapper.ClientHandle_cancel(self, modelId, queryId)
 
     def getDiagnosticString(self):
         return _libUbiquityClientWrapper.ClientHandle_getDiagnosticString(self)
+
+    def setLogLevel(self, level):
+        return _libUbiquityClientWrapper.ClientHandle_setLogLevel(self, level)
     __swig_destroy__ = _libUbiquityClientWrapper.delete_ClientHandle
 
 # Register ClientHandle in _libUbiquityClientWrapper:
@@ -147,8 +153,8 @@ def getStatusString(statusCode):
 def setAeronDirectory(directoryPath):
     return _libUbiquityClientWrapper.setAeronDirectory(directoryPath)
 
-def setCredential(appToken):
-    return _libUbiquityClientWrapper.setCredential(appToken)
+def setCredentials(appToken):
+    return _libUbiquityClientWrapper.setCredentials(appToken)
 
 def setApiAddress(root):
     return _libUbiquityClientWrapper.setApiAddress(root)
@@ -168,6 +174,33 @@ def closeClient():
 def xxh3_64bits(source):
     return _libUbiquityClientWrapper.xxh3_64bits(source)
 
+def setDefaultLogLevel(level):
+    return _libUbiquityClientWrapper.setDefaultLogLevel(level)
+
+def setProtocolLogLevel(level):
+    return _libUbiquityClientWrapper.setProtocolLogLevel(level)
+
+def setLogFileLevel(path, level):
+    return _libUbiquityClientWrapper.setLogFileLevel(path, level)
+
+def setLogFileDailyRotation(path, rotationHour, rotationMinute):
+    return _libUbiquityClientWrapper.setLogFileDailyRotation(path, rotationHour, rotationMinute)
+
+def setLogFileMaxSize(path, maxSize):
+    return _libUbiquityClientWrapper.setLogFileMaxSize(path, maxSize)
+
+def setLogFileMaxArchives(path, maxArchives):
+    return _libUbiquityClientWrapper.setLogFileMaxArchives(path, maxArchives)
+
+def setStdoutLevel(level):
+    return _libUbiquityClientWrapper.setStdoutLevel(level)
+
+def setStderrLevel(level):
+    return _libUbiquityClientWrapper.setStderrLevel(level)
+
+def setSyslogLevel(level):
+    return _libUbiquityClientWrapper.setSyslogLevel(level)
+
 MISSING_BOOLEAN = -1
 MISSING_CATEGORICAL = -1
 MISSING_NOMINAL = "_MISSING_"
@@ -177,6 +210,9 @@ UNDEFINED  = 0
 
 NO_BID = 0
 BID = 1
+
+WIN_RATE_PRESERVATION = 0
+EXPECTED_SURPLUS_MAXIMIZATION = 1
 
 SUCCESS  = 1
 NO_DATA  = 2
@@ -197,13 +233,37 @@ FORBIDDEN = 0x0F
 UNKNOWN_RESOURCE = 0x10
 OTHER_FETCH_ERROR = 0x11
 INVALID_CLUSTER_DESCRIPTION = 0x12
-SCHEMA_UNAVAILABLE = 0x13
+NO_MODEL_METADATA = 0x13
 INVALID_HANDLE = 0x14
 UNAUTHORIZED = 0x15
 INTERNAL_API_ERROR = 0x16
+OUT_OF_MEMORY = 0x17
 
 APP_BID_SHADING  = 0
 APP_PROBABILITY  = 1
 APP_LINE_ITEM  = 2
 APP_ACTION_RATE  = 3
 APP_UNDEFINED  = 9999
+
+LOG_OFF = 0
+
+LOG_TRACE = 0x01
+LOG_DEBUG = 0x02
+LOG_INFO = 0x04
+LOG_WARNING = 0x08
+LOG_ERROR = 0x10
+LOG_CRITICAL = 0x20
+
+MIN_LOG_TRACE = 0x3f
+MIN_LOG_DEBUG = 0x3e
+MIN_LOG_INFO = 0x3c
+MIN_LOG_WARNING = 0x38
+MIN_LOG_ERROR = 0x30
+MIN_LOG_CRITICAL = 0x20
+
+MAX_LOG_TRACE = 0x01
+MAX_LOG_DEBUG = 0x03
+MAX_LOG_INFO = 0x07
+MAX_LOG_WARNING = 0x0f
+MAX_LOG_ERROR = 0x1f
+MAX_LOG_CRITICAL = 0x3f
