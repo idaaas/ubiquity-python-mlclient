@@ -95,6 +95,15 @@ class ClientHandle(object):
     def getBidStatus(self):
         return _libUbiquityClientWrapper.ClientHandle_getBidStatus(self)
 
+    def isClassified(self):
+        return _libUbiquityClientWrapper.ClientHandle_isClassified(self)
+
+    def getPrediction(self):
+        return _libUbiquityClientWrapper.ClientHandle_getPrediction(self)
+
+    def getAction(self):
+        return _libUbiquityClientWrapper.ClientHandle_getAction(self)
+
     def poll(self):
         return _libUbiquityClientWrapper.ClientHandle_poll(self)
 
@@ -130,6 +139,15 @@ class ClientHandle(object):
 
     def startProbability(self):
         return _libUbiquityClientWrapper.ClientHandle_startProbability(self)
+
+    def startBinaryClassification(self):
+        return _libUbiquityClientWrapper.ClientHandle_startBinaryClassification(self)
+
+    def startRegression(self):
+        return _libUbiquityClientWrapper.ClientHandle_startRegression(self)
+
+    def startTrafficShaping(self):
+        return _libUbiquityClientWrapper.ClientHandle_startTrafficShaping(self)
 
     def train(self, modelId, queryId, feedbackLevel):
         return _libUbiquityClientWrapper.ClientHandle_train(self, modelId, queryId, feedbackLevel)
@@ -211,6 +229,9 @@ UNDEFINED  = 0
 NO_BID = 0
 BID = 1
 
+NO_SEND = 0
+SEND = 1
+
 WIN_RATE_PRESERVATION = 0
 EXPECTED_SURPLUS_MAXIMIZATION = 1
 
@@ -243,6 +264,9 @@ APP_BID_SHADING  = 0
 APP_PROBABILITY  = 1
 APP_LINE_ITEM  = 2
 APP_ACTION_RATE  = 3
+APP_BINARY_CLASSIFICATION = 4
+APP_REGRESSION = 5
+APP_TRAFFIC_SHAPING = 6
 APP_UNDEFINED  = 9999
 
 LOG_OFF = 0
