@@ -149,8 +149,8 @@ class ClientHandle(object):
     def startTrafficShaping(self):
         return _libUbiquityClientWrapper.ClientHandle_startTrafficShaping(self)
 
-    def train(self, modelId, queryId, feedbackLevel):
-        return _libUbiquityClientWrapper.ClientHandle_train(self, modelId, queryId, feedbackLevel)
+    def train(self, modelId, queryId, feedbackName):
+        return _libUbiquityClientWrapper.ClientHandle_train(self, modelId, queryId, feedbackName)
 
     def cancel(self, modelId, queryId):
         return _libUbiquityClientWrapper.ClientHandle_cancel(self, modelId, queryId)
